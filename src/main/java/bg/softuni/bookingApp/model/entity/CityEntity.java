@@ -1,13 +1,12 @@
 package bg.softuni.bookingApp.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -22,4 +21,7 @@ public class CityEntity extends BaseEntity {
 
     @ManyToOne
     private CountryEntity country;
+
+    @OneToMany(mappedBy = "city", targetEntity = HotelEntity.class)
+    private List<HotelEntity> hotels;
 }
